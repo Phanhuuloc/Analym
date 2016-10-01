@@ -44,9 +44,11 @@ public class TextExtractor {
 
     private void countWords(String text) {
         Set wordsSet  = new HashSet<String>();
-        wordsArray = (text.replace("[^\\\\p{L}\\\\p{Z}]","")).split(" ");
+        String tmp = text.replaceAll("[^\\p{L}\\p{Z}]","");
+        wordsArray = tmp.split(" ");
         totalWordCounts = wordsArray.length;
 
+        System.out.println(tmp);
         wordsSet.addAll(Arrays.asList(wordsArray));
         wordCounts= wordsSet.size();
         wordsList.addAll(wordsSet);
