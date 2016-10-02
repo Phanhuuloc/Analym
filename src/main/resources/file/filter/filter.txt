@@ -1,0 +1,5 @@
+the,a,an,
+i,we,you,they,he,she,it,my,his,him,her,their,us,
+am,is,are,was,were,been,can,could,would,should,may,have,has,
+of,in,on,for,and,that,to,with,
+this,from,s,as,or,are,can,be,by,com

@@ -6,12 +6,19 @@ import org.xml.sax.SAXException;
 
 import java.io.IOException;
 
+import java.util.Set;
+
 /**
  * Created by Locphan on 10/1/2016.
  */
 public class App {
     public static void main(String[] args) {
-        String filePath = "D:\\EBOOK PROPRAMING\\ManningTikainActionNov2011.pdf";
+
+        //parse doc
+//        String filePath = "D:\\EBOOK PROPRAMING\\ManningTikainActionNov2011.pdf";
+        String filePath = "D:\\EBOOK PROPRAMING\\HeadFirst\\Head_First_Java_Second_Edition.pdf";
+        String filterPath = "src\\main\\resources\\file\\filter\\filter.txt";
+
         String text = "";
         try {
             text = TikaParser.docToString(filePath);
@@ -22,7 +29,15 @@ public class App {
         } catch (TikaException e) {
             e.printStackTrace();
         }
-        TextExtractor extractor = new TextExtractor(text.toLowerCase());
+
+        //config
+        ExtractConfig config = new ExtractConfig();
+
+        Set<String> filterSet = WordsFilter.getFilterSet(filterPath);
+
+        config.setWordsFilter(filterSet);
+
+        Extractor extractor = new TextExtractor(text.toLowerCase(),config);
         extractor.extract();
 
         System.out.println(extractor.wordCounts);

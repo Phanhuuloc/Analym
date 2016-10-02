@@ -7,11 +7,10 @@ import java.io.IOException;
 /**
  * Created by Locphan on 10/2/2016.
  */
-public class ReadText {
+public class SimpleReadText {
 
     public static void main(String[] args) {
-
-ReadText r = new ReadText();
+        SimpleReadText r = new SimpleReadText();
         String s = r.read("");
         System.out.println(s);
     }
@@ -20,15 +19,11 @@ ReadText r = new ReadText();
         BufferedReader br = null;
         String text = "";
         try {
-
             String sCurrentLine;
-
-            br = new BufferedReader(new FileReader("D:\\EXAMPLE_CODE\\JAVA\\Analym\\src\\main\\resources\\file\\text\\text.txt"));
-
+            br = new BufferedReader(new FileReader(filePath));
             while ((sCurrentLine = br.readLine()) != null) {
-                text += sCurrentLine+" \n";
+                text += sCurrentLine + " \n";
             }
-
         } catch (IOException e) {
             e.printStackTrace();
         } finally {
